@@ -5,7 +5,7 @@
 
 export function rank(tweet: string) {
   const parsed = tweet.toLowerCase()
-  const sum = [pepeGood(parsed), elonGood(parsed)].reduce(
+  const sum = [pepe(parsed), elon(parsed)].reduce(
     (partialSum, a) => partialSum + a,
     0
   )
@@ -27,14 +27,14 @@ export function rank(tweet: string) {
 // Add new rules here!
 // ---------------------------
 
-function pepeGood(tweet: string) {
+function pepe(tweet: string) {
   if (tweet.indexOf("🐸") >= 0) {
     return 50
   }
   return 0
 }
 
-function elonGood(tweet: string) {
+function elon(tweet: string) {
   if (tweet.indexOf("elon") >= 0) {
     return 25
   }
