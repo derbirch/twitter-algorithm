@@ -2,7 +2,9 @@
 
 Our algorithm has been a secret since Twitter first began in 2006, but at the request of our new owner, Elon Musk, our algorithm is now in the public domain. We've put it on GitHub for the world to scrutinize and remix.
 
-> "Free speech is the bedrock of a functioning democracy, and Twitter is the digital town square" ~ Elon Musk
+> "Free speech is the bedrock of a functioning democracy, and Twitter is the digital town square"
+
+~ Elon Musk
 
 ### Viewing
 
