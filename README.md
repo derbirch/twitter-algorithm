@@ -28,4 +28,4 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Add new to rules to our algorithm by editing [/blob/main/lib/algorithm.ts](algorithm.ts).
+Add new to rules to our algorithm by editing [algorithm.ts](/blob/main/lib/algorithm.ts).
