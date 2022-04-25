@@ -2,7 +2,7 @@
 
 Our algorithm has been a secret since Twitter first began in 2006, but at the request of our new owner, Elon Musk, our algorithm is now in the public domain. We've put it on GitHub for the world to scrutinize and remix.
 
-> "Free speech is the bedrock of a functioning democracy, and Twitter is the digital town square"
+> "Free speech is the bedrock of a functioning democracy, and Twitter is the digital town square."
 
 ~ Elon Musk
 
@@ -10,6 +10,11 @@ Our algorithm has been a secret since Twitter first began in 2006, but at the re
 
 Want to see how your tweet will score?
 [Give the algorithm a try for yourself](https://twitter-algorithm.vercel.app/)
+
+Pro tips:
+
+- Try typing "elon" for 25 points
+- Or "🐸" for 50 points
 
 ### Contributing
 
