@@ -3,14 +3,17 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { Button } from "../components/Button"
 import { Tweet } from "../components/Tweet"
+import { Ranking } from "../components/Ranking"
 import { rank } from "../lib/algorithm"
 
 const Home = () => {
   const [score, setScore] = useState<number | undefined>()
+  const [validations, setValidations] = useState<Array<Validation>>([])
   const [tweet, setTweet] = useState<string>("")
   useEffect(() => {
-    const score = rank(tweet)
-    setScore(score)
+    const rankResponse = rank(tweet)
+    setScore(rankResponse.score)
+    setValidations(rankResponse.validations)
   }, [tweet])
   return (
     <>
@@ -74,15 +77,15 @@ const Home = () => {
           <div className="contain">
             <div className="limit">
               <h1>Algorithm Rank Validator</h1>
-              <div className="tweet-wrap">
-                <p>
-                  See how your tweet will perform against the official Twitter
-                  algorithm.
-                </p>
-                <Tweet tweet={tweet} setTweet={setTweet} />
-              </div>
-              <div>
-                Algorithm score: <strong>{score}/100</strong>
+              <div className="sides">
+                <div className="side">
+                  <h2>Your Tweet</h2>
+                  <Tweet tweet={tweet} setTweet={setTweet} />
+                </div>
+                <div className="side">
+                  <h2>Your Ranking</h2>
+                  <Ranking score={score} validations={validations} />
+                </div>
               </div>
             </div>
           </div>
@@ -127,6 +130,11 @@ const Home = () => {
         .contain {
           padding: 0 20px;
         }
+        .sides {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-gap: 60px;
+        }
         .limit {
           max-width: 980px;
           margin: 0 auto;
@@ -135,12 +143,18 @@ const Home = () => {
           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
         .content {
-          margin-top: 40px;
+          margin-top: 60px;
         }
         h1 {
           font-weight: 500;
           margin: 0 0 40px 0;
           padding-bottom: 15px;
+          border-bottom: 1px solid #dbdbdb;
+        }
+        h2 {
+          font-weight: 500;
+          margin: 0 0 30px 0;
+          padding-bottom: 10px;
           border-bottom: 1px solid #dbdbdb;
         }
         p {
@@ -149,6 +163,12 @@ const Home = () => {
         .tweet-wrap {
           max-width: 500px;
           margin: 30px 0;
+        }
+        @media screen and (min-width: 860px) {
+          .sides {
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 60px;
+          }
         }
       `}</style>
     </>

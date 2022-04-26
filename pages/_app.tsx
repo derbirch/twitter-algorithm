@@ -8,6 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <style global jsx>{`
         html {
           box-sizing: border-box;
+          line-height: 1.4;
         }
         *,
         *:before,

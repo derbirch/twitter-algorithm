@@ -10,6 +10,9 @@ export const Tweet = ({ tweet, setTweet }: TweetProps) => {
   return (
     <>
       <div className="tweet-wrap">
+        <p>
+          See how your tweet performs against the official Twitter algorithm.
+        </p>
         <textarea
           maxLength={240}
           onChange={(e) => setTweet(e.target.value)}
@@ -31,10 +34,9 @@ export const Tweet = ({ tweet, setTweet }: TweetProps) => {
           width: 100%;
           height: 150px;
           display: block;
-          padding: 4px 8px;
-          font-size: 13px;
+          padding: 10px;
+          font-size: 14px;
           line-height: 1.4;
-          color: #555;
           vertical-align: middle;
           background-color: #fff;
           border: 1px solid #ccc;
