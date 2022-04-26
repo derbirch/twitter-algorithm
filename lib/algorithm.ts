@@ -231,7 +231,7 @@ function russia({ tweet, sentiment }: TweetData): Rank {
  */
 function democracy({ tweet, sentiment }: TweetData): Rank {
   const phrases = [
-    "america",
+    "americagit ",
     "american",
     "democracy",
     "democratic",
