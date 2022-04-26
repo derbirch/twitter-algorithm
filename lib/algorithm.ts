@@ -10,17 +10,10 @@ import Sentiment from "sentiment"
 export function rank(tweet: string): RankResponse {
   const parsedTweet = tweet.toLowerCase()
   // Default score
-  if (parsedTweet.length === 0) {
+  if (parsedTweet.length < 2) {
     return {
       score: 0,
       validations: [],
-    }
-  }
-  // Don't run algorithm on super short tweets
-  if (parsedTweet.length <= 6) {
-    return {
-      score: -10,
-      validations: [{ message: "Too short", type: "negative" }],
     }
   }
   const sentiment = new Sentiment()
@@ -238,6 +231,8 @@ function russia({ tweet, sentiment }: TweetData): Rank {
  */
 function democracy({ tweet, sentiment }: TweetData): Rank {
   const phrases = [
+    "america",
+    "american",
     "democracy",
     "democratic",
     "western",
