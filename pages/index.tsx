@@ -46,11 +46,21 @@ const Home = () => {
               <div>
                 <ul>
                   <li>
-                    <a href="https://dev.twitter.com/cards">Documentation</a>
+                    <a
+                      target="_blank"
+                      href="https://github.com/coryetzkorn/twitter-algorithm/blob/main/lib/algorithm.ts"
+                      rel="noreferrer"
+                    >
+                      View Algorithm
+                    </a>
                   </li>
                   <li>
-                    <a href="https://twittercommunity.com/c/publisher/cards/8">
-                      Community
+                    <a
+                      target="_blank"
+                      href="https://github.com/coryetzkorn/twitter-algorithm"
+                      rel="noreferrer"
+                    >
+                      Contribute
                     </a>
                   </li>
                 </ul>

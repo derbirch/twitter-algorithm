@@ -4,10 +4,13 @@ interface ButtonProps {
   onClick: () => void
 }
 
-export const Button = ({ children }: PropsWithChildren<ButtonProps>) => {
+export const Button = ({
+  children,
+  onClick,
+}: PropsWithChildren<ButtonProps>) => {
   return (
     <>
-      <button>{children}</button>
+      <button onClick={onClick}>{children}</button>
       <style jsx>{`
         button {
           cursor: pointer;

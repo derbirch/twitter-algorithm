@@ -16,7 +16,11 @@ export const Tweet = ({ tweet, setTweet }: TweetProps) => {
           placeholder="Type your tweet here"
         />
         <div className="actions">
-          <Button onClick={() => {}}>Rank Tweet</Button>
+          <Button
+            onClick={() => alert("Coming soon. See real-time score below.")}
+          >
+            Rank Tweet
+          </Button>
         </div>
       </div>
       <style jsx>{`
