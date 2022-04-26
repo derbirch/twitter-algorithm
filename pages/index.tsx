@@ -8,7 +8,7 @@ import { rank } from "../lib/algorithm"
 
 const Home = () => {
   const [ranking, setRanking] = useState<RankResponse>({
-    score: 50,
+    score: 0,
     validations: [],
   })
   const [tweet, setTweet] = useState<string>("")

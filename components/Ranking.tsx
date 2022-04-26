@@ -15,7 +15,7 @@ export const Ranking = ({ ranking }: RankingProps) => {
     <>
       <div>
         <p>
-          Score: <strong>{ranking.score}/100</strong>
+          Score: <strong>{ranking.score}</strong>
         </p>
         <ul>
           {positive.map((item, index) => (

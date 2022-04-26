@@ -14,6 +14,7 @@ export const Tweet = ({ tweet, setTweet }: TweetProps) => {
           See how your tweet performs against the official Twitter algorithm.
         </p>
         <textarea
+          autoFocus={true}
           maxLength={240}
           onChange={(e) => setTweet(e.target.value)}
           placeholder="Type your tweet here"
@@ -35,7 +36,7 @@ export const Tweet = ({ tweet, setTweet }: TweetProps) => {
           height: 150px;
           display: block;
           padding: 10px;
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.4;
           vertical-align: middle;
           background-color: #fff;
