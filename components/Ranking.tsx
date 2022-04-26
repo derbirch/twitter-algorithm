@@ -1,18 +1,21 @@
 import { Dispatch, PropsWithChildren, SetStateAction } from "react"
 
-interface RankingProps {
-  score?: number
-  validations: Array<Validation>
+type RankingProps = {
+  ranking: RankResponse
 }
 
-export const Ranking = ({ score, validations }: RankingProps) => {
-  const positive = validations.filter((item) => item.type === "positive")
-  const negative = validations.filter((item) => item.type === "negative")
+export const Ranking = ({ ranking }: RankingProps) => {
+  const positive = ranking.validations.filter(
+    (item) => item.type === "positive"
+  )
+  const negative = ranking.validations.filter(
+    (item) => item.type === "negative"
+  )
   return (
     <>
       <div>
         <p>
-          Score: <strong>{score}/100</strong>
+          Score: <strong>{ranking.score}/100</strong>
         </p>
         <ul>
           {positive.map((item, index) => (

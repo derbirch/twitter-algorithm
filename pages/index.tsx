@@ -7,13 +7,14 @@ import { Ranking } from "../components/Ranking"
 import { rank } from "../lib/algorithm"
 
 const Home = () => {
-  const [score, setScore] = useState<number | undefined>()
-  const [validations, setValidations] = useState<Array<Validation>>([])
+  const [ranking, setRanking] = useState<RankResponse>({
+    score: 50,
+    validations: [],
+  })
   const [tweet, setTweet] = useState<string>("")
   useEffect(() => {
     const rankResponse = rank(tweet)
-    setScore(rankResponse.score)
-    setValidations(rankResponse.validations)
+    setRanking(rankResponse)
   }, [tweet])
   return (
     <>
@@ -84,7 +85,7 @@ const Home = () => {
                 </div>
                 <div className="side">
                   <h2>Your Ranking</h2>
-                  <Ranking score={score} validations={validations} />
+                  <Ranking ranking={ranking} />
                 </div>
               </div>
             </div>

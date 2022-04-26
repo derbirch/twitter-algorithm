@@ -4,13 +4,10 @@ interface Validation {
 }
 interface RankResponse {
   score: number
-  validations: Array<Validation>
+  validations: Array<ProcessedValidation>
 }
 
 interface Rank {
   score: number
-  validation?: {
-    type: "positive" | "negative"
-    message: string
-  }
+  message?: string
 }

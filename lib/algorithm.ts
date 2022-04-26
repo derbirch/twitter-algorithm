@@ -15,7 +15,18 @@ export function rank(tweet: string): RankResponse {
   ]
   const startingScore = 50
   const scores = rules.map((item) => item.score)
-  const validations = compact(rules.map((item) => item.validation))
+  const validations: Array<Validation> = compact(
+    rules.map((item) => {
+      if (item.message) {
+        const type = item.score >= 1 ? "positive" : "negative"
+        const operator = type === "positive" ? "+" : "-"
+        return {
+          message: `${item.message} (${operator}${Math.abs(item.score)}pts)`,
+          type,
+        }
+      }
+    })
+  )
   const sum = scores.reduce((partialSum, a) => partialSum + a, 0)
   const totalScore = startingScore + sum
   if (totalScore < 0) {
@@ -59,10 +70,7 @@ function liberals(tweet: string): Rank {
   if (totalMatches > 0) {
     return {
       score: totalMatches * scorePerMatch,
-      validation: {
-        type: "positive",
-        message: `Included ${totalMatches} liberals`,
-      },
+      message: `Included ${totalMatches} liberals`,
     }
   }
   return {
@@ -84,10 +92,7 @@ function conservatives(tweet: string): Rank {
   if (totalMatches > 0) {
     return {
       score: totalMatches * scorePerMatch,
-      validation: {
-        type: "negative",
-        message: `Included ${totalMatches} conservatives`,
-      },
+      message: `Included ${totalMatches} conservatives`,
     }
   }
   return {
@@ -102,10 +107,7 @@ function elon(tweet: string): Rank {
   if (tweet.indexOf("elon") >= 0) {
     return {
       score: 100,
-      validation: {
-        type: "positive",
-        message: `Talked about Elon Musk`,
-      },
+      message: `Talked about Elon Musk`,
     }
   }
   return {
@@ -120,10 +122,7 @@ function pepe(tweet: string): Rank {
   if (tweet.indexOf("🐸") >= 0) {
     return {
       score: 50,
-      validation: {
-        type: "positive",
-        message: `Included a cute frog 🐸`,
-      },
+      message: `Included a cute frog 🐸`,
     }
   }
   return {
