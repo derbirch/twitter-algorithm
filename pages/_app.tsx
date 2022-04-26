@@ -6,6 +6,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Component {...pageProps} />{" "}
       <style global jsx>{`
+        html {
+          box-sizing: border-box;
+        }
+        *,
+        *:before,
+        *:after {
+          box-sizing: inherit;
+        }
         :root {
           --white: #ffffff;
           --blue: #55acee;
