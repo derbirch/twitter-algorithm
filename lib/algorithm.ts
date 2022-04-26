@@ -6,20 +6,22 @@
 export function rank(tweet: string) {
   const parsedTweet = tweet.toLowerCase()
   const rules = [
+    liberals(parsedTweet),
+    conservatives(parsedTweet),
     pepe(parsedTweet),
     elon(parsedTweet),
-    conservatives(parsedTweet),
-    liberals(parsedTweet),
   ]
+  const startingRank = 50
   const sum = rules.reduce((partialSum, a) => partialSum + a, 0)
-  if (sum < 0) {
+  const rank = startingRank + sum
+  if (rank < 0) {
     // 0 is the minimum score
     return 0
-  } else if (sum > 100) {
+  } else if (rank > 100) {
     // 100 is the maximum score
     return 100
   } else {
-    return sum
+    return rank
   }
 }
 
@@ -29,27 +31,6 @@ export function rank(tweet: string) {
 // -----
 // Add new rules here!
 // ---------------------------
-
-/**
- * Suppress conservative voices
- */
-function conservatives(tweet: string) {
-  const people = [
-    "donald trump",
-    "trump",
-    "rudy giuliani",
-    "rush limbaugh",
-    "dick cheney",
-    "laura ingraham",
-  ]
-  const matches = people.map((person) => {
-    const regex = new RegExp(`\\b${person}\\b`, "gi")
-    return (tweet.match(regex) || []).length
-  })
-  const totalMatches = matches.reduce((partialSum, a) => partialSum + a, 0)
-  const scorePerMatch = -5
-  return totalMatches * scorePerMatch
-}
 
 /**
  * Amplify liberal voices
@@ -69,6 +50,27 @@ function liberals(tweet: string) {
   })
   const totalMatches = matches.reduce((partialSum, a) => partialSum + a, 0)
   const scorePerMatch = 10
+  return totalMatches * scorePerMatch
+}
+
+/**
+ * Suppress conservative voices
+ */
+function conservatives(tweet: string) {
+  const people = [
+    "donald trump",
+    "trump",
+    "rudy giuliani",
+    "rush limbaugh",
+    "dick cheney",
+    "laura ingraham",
+  ]
+  const matches = people.map((person) => {
+    const regex = new RegExp(`\\b${person}\\b`, "gi")
+    return (tweet.match(regex) || []).length
+  })
+  const totalMatches = matches.reduce((partialSum, a) => partialSum + a, 0)
+  const scorePerMatch = -5
   return totalMatches * scorePerMatch
 }
 
